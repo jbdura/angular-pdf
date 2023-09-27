@@ -1,0 +1,65 @@
+<div>
+  <div class="container mx-auto p-4">
+    <h2 class="text-2xl font-semibold">Invoice</h2>
+
+    <!-- Your Information -->
+    <div class="my-4">
+      <h3 class="text-xl font-semibold">Your Information</h3>
+      <p>Your Name/Business Name: {{ yourName }}</p>
+      <p>Your Address: {{ yourAddress }}</p>
+      <p>Your Phone Number: {{ yourPhoneNumber }}</p>
+      <p>Your Email: {{ yourEmail }}</p>
+    </div>
+
+    <!-- Bill To -->
+    <div class="my-4">
+      <h3 class="text-xl font-semibold">Bill To</h3>
+      <p>Buyer Name/Business Name: {{ buyerName }}</p>
+      <p>Buyer Address: {{ buyerAddress }}</p>
+      <p>Buyer Phone Number: {{ buyerPhoneNumber }}</p>
+      <p>Buyer Email: {{ buyerEmail }}</p>
+    </div>
+
+    <!-- Invoice Details -->
+    <div class="my-4">
+      <p>Invoice Number: {{ invoiceNumber }}</p>
+      <p>Invoice Date: {{ invoiceDate }}</p>
+      <p>Payment Due: {{ paymentDue }}</p>
+    </div>
+
+    <!-- Items Table -->
+    <table class="w-full my-4">
+      <thead>
+        <tr>
+          <th class="px-4 py-2">Item</th>
+          <th class="px-4 py-2">Quantity</th>
+          <th class="px-4 py-2">Price per Unit</th>
+          <th class="px-4 py-2">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td class="px-4 py-2">{{ item.item }}</td>
+          <td class="px-4 py-2">{{ item.quantity }}</td>
+          <td class="px-4 py-2">{{ item.pricePerUnit }}</td>
+          <td class="px-4 py-2">{{ item.amount }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Total, Discount, Tax -->
+    <div class="my-4">
+      <p>Total: {{ totalAmount | currency }}</p>
+      <p>Discount: {{ discountAmount | currency }}</p>
+      <p>Tax: {{ taxAmount | currency }}</p>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <div class="my-4">
+      <h3 class="text-xl font-semibold">Terms and Conditions</h3>
+      <p>Place your terms and conditions text here...</p>
+    </div>
+  </div>
+
+  <button (click)="generatePdf()">Generate PDF</button>
+</div>
